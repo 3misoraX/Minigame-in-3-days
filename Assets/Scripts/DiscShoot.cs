@@ -3,7 +3,7 @@ using UnityEngine.InputSystem;
 
 public class DiscShoot : MonoBehaviour
 {
-    public float force = 1000f;
+    public float force = 100f;
     public GameObject disc;
     [SerializeField] private InputActionReference shootAction;
     public Transform shootPoint;

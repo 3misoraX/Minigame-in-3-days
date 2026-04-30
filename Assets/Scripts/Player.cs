@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -15,6 +16,9 @@ public class Player : MonoBehaviour
     public float jumpForce = 7f;
     public float gravity = -12f;
     public float iFallVelocity = -2f;
+    //health related
+    public int hp = 3;
+    private bool canTakeDmg = true;
 
     void Awake()
     {
@@ -66,6 +70,14 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //killing the player
+        if(hp <= 0)
+        {
+            //Player death
+            this.gameObject.SetActive(false);
+            //summoning the game over screen
+        }
+
         //gravity
         isGrounded = charControl.isGrounded;
         HandleGravity();
@@ -80,4 +92,22 @@ public class Player : MonoBehaviour
         fMove.y = verticalVelocity;
         charControl.Move(fMove * Time.deltaTime);
     }
+
+    public void TakeDmg()
+    {
+        //if player can take damage, they will do so and enter on iframes
+        if (canTakeDmg)
+        {
+            hp--;
+            canTakeDmg = false;
+            //this coroutine is the IFrames
+            StartCoroutine(Iframes());
+        }
+    }
+    IEnumerator Iframes()
+    {
+        yield return new WaitForSeconds(2f);
+        canTakeDmg = true;
+    }
 }
+// :P
