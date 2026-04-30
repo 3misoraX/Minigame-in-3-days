@@ -9,7 +9,6 @@ public class DiscReturn : MonoBehaviour
     public InputActionReference shoot;
     private Transform shootpoint;
     private Vector3 direction;
-    private int life = 3;
     private Rigidbody rb;
 
     void Awake()
@@ -33,16 +32,8 @@ public class DiscReturn : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        life--;
-        if(life <= 0)
-        {
-            ds.hasDisc = true;
-            Destroy(this.gameObject);
-            return;
-        }
-
         var contact = collision.contacts[0];
         Vector3 newVel = Vector3.Reflect(direction.normalized, contact.normal);
-        rb.AddForce(ds.force * newVel, ForceMode.VelocityChange);
+        rb.AddForce(ds.force * newVel, ForceMode.Impulse);
     }
 }

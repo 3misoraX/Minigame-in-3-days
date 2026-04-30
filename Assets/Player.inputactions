@@ -16,6 +16,15 @@
                     "initialStateCheck": true
                 },
                 {
+                    "name": "Pause",
+                    "type": "Button",
+                    "id": "0cd2a100-8c97-40d8-ab0b-a35cf33f91bc",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
                     "name": "Jump",
                     "type": "Button",
                     "id": "dc79096b-7af9-4910-a405-932a39dffb0a",
@@ -92,6 +101,17 @@
                 },
                 {
                     "name": "",
+                    "id": "60f2279b-49b4-443a-8cef-f2d449703d1e",
+                    "path": "<Keyboard>/escape",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Keyboard",
+                    "action": "Pause",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "8dd21911-241e-460f-a3fc-cc5209d0385a",
                     "path": "<Keyboard>/space",
                     "interactions": "",
@@ -109,6 +129,34 @@
                     "processors": "",
                     "groups": ";Keyboard",
                     "action": "Shoot",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        },
+        {
+            "name": "UI",
+            "id": "c9c63603-175e-4a6f-9459-e5f7910cba4c",
+            "actions": [
+                {
+                    "name": "Confirm",
+                    "type": "Button",
+                    "id": "c1c73424-92bb-4ab4-aaff-d6c64168bf4f",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "99d241fc-d1aa-485d-b37f-86f3591ea8fa",
+                    "path": "<Mouse>/leftButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Keyboard",
+                    "action": "Confirm",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

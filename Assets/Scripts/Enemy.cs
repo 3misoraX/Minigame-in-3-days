@@ -4,6 +4,7 @@ public class Enemy : MonoBehaviour
 {
     public float speed = 5f;
     private GameObject player;
+    private Vector3 dir;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -14,6 +15,7 @@ public class Enemy : MonoBehaviour
     void Update()
     {
         transform.position = Vector3.MoveTowards(transform.position, player.transform.position, speed * Time.deltaTime);
+        transform.LookAt(player.transform.position);
     }
 
     private void OnCollisionEnter(Collision collision)
