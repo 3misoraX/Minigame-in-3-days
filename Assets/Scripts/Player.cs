@@ -1,6 +1,7 @@
 using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using TMPro;
 
 public class Player : MonoBehaviour
 {
@@ -8,7 +9,9 @@ public class Player : MonoBehaviour
     public float speed = 6f;
     [SerializeField]private Transform cameraTransform;
     [SerializeField]private InputActionReference moveActions;
-    [SerializeField] private InputActionReference JumpAction;
+    [SerializeField]private InputActionReference JumpAction;
+    [SerializeField]private PlayerInput pi;
+    public GameObject uicontrol;
     private Vector2 movement;
     private CharacterController charControl;
     private bool isGrounded;
@@ -19,6 +22,7 @@ public class Player : MonoBehaviour
     //health related
     public int hp = 3;
     private bool canTakeDmg = true;
+    public TMP_Text ico;
 
     void Awake()
     {
@@ -73,9 +77,8 @@ public class Player : MonoBehaviour
         //killing the player
         if(hp <= 0)
         {
-            //Player death
+            GameObject.Find("GameManager").GetComponent<Score>().ShowFinal();
             this.gameObject.SetActive(false);
-            //summoning the game over screen
         }
 
         //gravity
@@ -100,6 +103,7 @@ public class Player : MonoBehaviour
         {
             hp--;
             canTakeDmg = false;
+            ico.text = "Hp: " + hp;
             //this coroutine is the IFrames
             StartCoroutine(Iframes());
         }

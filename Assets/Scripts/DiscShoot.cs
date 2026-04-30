@@ -8,6 +8,7 @@ public class DiscShoot : MonoBehaviour
     [SerializeField] private InputActionReference shootAction;
     public Transform shootPoint;
     public bool hasDisc = true;
+    public GameObject ico;
     // Update is called once per frame
     void Update()
     {
@@ -18,6 +19,15 @@ public class DiscShoot : MonoBehaviour
             GameObject projectile = Instantiate(disc, shootPoint.position, Quaternion.identity);
             projectile.GetComponent<Rigidbody>().AddForce(transform.forward*force, ForceMode.VelocityChange);
             hasDisc = false;
+        }
+
+        if (!hasDisc)
+        {
+            ico.SetActive(false);
+        }
+        else
+        {
+            ico.SetActive(true);
         }
     }
 }

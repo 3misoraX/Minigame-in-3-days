@@ -30,6 +30,7 @@ public class Enemy : MonoBehaviour
        //Damaging the enemy
        else if(collision.gameObject.name == "Disc(Clone)")
         {
+            GameObject.Find("GameManager").GetComponent<Score>().AddScore();
             Destroy(this.gameObject);
         }
     }
