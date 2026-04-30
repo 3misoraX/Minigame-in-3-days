@@ -11,6 +11,7 @@ public class DiscReturn : MonoBehaviour
     private Vector3 direction;
     private Rigidbody rb;
 
+    //Finding dependencies
     void Awake()
     {
         ds = GameObject.Find("Main Camera").GetComponent<DiscShoot>();
@@ -21,7 +22,7 @@ public class DiscReturn : MonoBehaviour
 
     private void Update()
     {
-         
+         //Countdown to destroy the disc
         timer -= Time.deltaTime;
         if(timer <= 0 || shoot.action.triggered)
         {
@@ -32,6 +33,7 @@ public class DiscReturn : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
+        //on first contact, the disc will bounce, reflecting the direction vector
         var contact = collision.contacts[0];
         Vector3 newVel = Vector3.Reflect(direction.normalized, contact.normal);
         rb.AddForce(ds.force * newVel, ForceMode.Impulse);

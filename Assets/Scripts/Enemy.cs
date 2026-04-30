@@ -13,23 +13,23 @@ public class Enemy : MonoBehaviour
 
     // Update is called once per frame
     void Update()
-    {
+    { 
+        //movement and rotation, always towards the player
         transform.position = Vector3.MoveTowards(transform.position, player.transform.position, speed * Time.deltaTime);
         transform.LookAt(player.transform.position);
     }
 
     private void OnCollisionEnter(Collision collision)
-    {
+    { 
+        //Damaging the player
        if(collision.gameObject.CompareTag("Player") == true)
         {
             Player p = collision.gameObject.GetComponent<Player>();
             p.TakeDmg();
         }
+       //Damaging the enemy
        else if(collision.gameObject.name == "Disc(Clone)")
         {
-            //Destroying the enemy
-            //Make a particle effect
-            //Destroy after some time
             Destroy(this.gameObject);
         }
     }
